@@ -1,5 +1,5 @@
 /**
- * backboneit_multimedia
+ * backboneit_multimedia_jwplayer
  * JW-Player integration for Contao CMS
  *
  * @copyright  backboneIT | Oliver Hoff 2012
