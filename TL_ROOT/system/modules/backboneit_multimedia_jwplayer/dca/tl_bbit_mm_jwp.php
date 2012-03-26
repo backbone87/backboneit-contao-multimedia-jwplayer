@@ -253,6 +253,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'files'				=> true,
 				'filesOnly'			=> true,
 				'extensions'		=> 'swf',
+				'decodeEntities'	=> true,
 				'tl_class'			=> 'clr'
 			)
 		),
@@ -266,6 +267,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'files'				=> true,
 				'filesOnly'			=> true,
 				'extensions'		=> 'zip',
+				'decodeEntities'	=> true,
 				'tl_class'			=> 'clr'
 			)
 		),

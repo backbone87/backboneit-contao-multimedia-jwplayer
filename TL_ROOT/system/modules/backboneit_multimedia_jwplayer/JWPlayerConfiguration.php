@@ -282,9 +282,10 @@ class JWPlayerConfiguration extends System {
 		}
 		
 		$strTempPath = 'system/html/jwp-skin-' . substr(md5($strPath), 0, 8);
-		$blnExists = is_dir(TL_ROOT . '/' . $strTempPath);
+		$strSkinFile = $strTempPath . '/' . basename($strPath);
+		$blnExists = is_file(TL_ROOT . '/' . $strSkinFile);
 		
-		if($blnRecreate && $blnExists) {
+		if($blnRecreate || !$blnExists) {
 			$objTempDir = new Folder($strTempPath);
 			$objTempDir->delete();
 			unset($objTempDir);
@@ -292,7 +293,7 @@ class JWPlayerConfiguration extends System {
 		}
 		
 		if(!$blnExists) {
-			$objZip = new ZipReader($strSource);
+			$objZip = new ZipReader($strPath);
 			$objZip->first();
 			do {
 				$objFile = new File($strTempPath . '/' . $objZip->file_name);
@@ -304,11 +305,11 @@ class JWPlayerConfiguration extends System {
 					throw new Exception(sprintf('Error while unzipping JW Player skin file [%s] from archive [%s].', $objZip->file_name, $strPath));
 				}
 			} while($objZip->next());
-			
-			Files::copy($strPath, $strTempPath . '/' . basename($strPath));
+				
+			Files::getInstance()->copy($strPath, $strSkinFile);
 		}
 		
-		return $strTempPath . '/' . basename($strPath);
+		return $strSkinFile;
 	}
 	
 }

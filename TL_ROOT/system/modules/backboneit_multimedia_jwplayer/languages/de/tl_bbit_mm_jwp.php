@@ -152,4 +152,5 @@ $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['errPlayerApp']
 	= 'Keine gültige JW-Player Applikation! %s';
 $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['errColor']
 	= 'Keine gültiger Farbwert.';
-	
+$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['errSkin']
+	= 'Kein gültiger JW-Player Skin! %s';
