@@ -50,6 +50,8 @@ CREATE TABLE `tl_bbit_mm_jwp` (
   `logoHide` char(1) NOT NULL default '1',
   `logoTimeout` smallint(5) NOT NULL default '3',
   
+  `template` varchar(255) NOT NULL default '',
+  
   PRIMARY KEY  (`id`),
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 

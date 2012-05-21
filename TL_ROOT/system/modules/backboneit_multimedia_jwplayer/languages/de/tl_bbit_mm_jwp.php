@@ -148,6 +148,15 @@ $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['logoTimeout']
 	= array('Ausblendverzögerung (in Sekunden)', 'Die Verzögerung bis das Logo ausgeblendet wird, nach dem der Abspielvorgang gestartet wurde.');
 
 
+$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['expert_legend']
+	= 'Experten Einstellungen';
+$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['template']
+	= array('Template', 'Das Template welches den Player rendert.');
+$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['templateOptions'] = array(
+	'bbit_jwp' => 'bbit_jwp (Standard)',
+	'bbit_jwp_deferred' => 'bbit_jwp_deferred (Player-Integration nach Play-Aktion)'
+);
+
 $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['errPlayerApp']
 	= 'Keine gültige JW-Player Applikation! %s';
 $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['errColor']

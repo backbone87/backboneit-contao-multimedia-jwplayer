@@ -48,6 +48,12 @@ class JWPlayerDCA extends Backend {
 			
 		return $arrOptions;
 	}
+	
+	public function getTemplateOptions($objDC) {
+	    $arrTpls = $this->getTemplateGroup('bbit_jwp_');
+		array_unshift($arrTpls, 'bbit_jwp');
+		return $arrTpls;
+	}
 
 	public function getEditJWPlayerWizard(DataContainer $objDC) {
 		if($objDC->value < 1) {

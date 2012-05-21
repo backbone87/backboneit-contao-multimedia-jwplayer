@@ -3,11 +3,9 @@
 class JWPlayer extends AbstractMultimediaPlayer {
 	
 	protected static $arrSupported = array(
-		'MultimediaStreamRTMP' 	=> true,
-		'MultimediaStreamHTTP'	=> true,
-		'MultimediaYoutube'		=> true,
-		'MultimediaVideo'		=> true,
-		'MultimediaAudio'		=> true
+		'MultimediaYoutube'			=> true,
+		'MultimediaVideoHTTP'		=> true,
+// 		'MultimediaAudio'			=> true,
 	);
 	
 	public static function create(array $arrData = null) {
@@ -44,7 +42,7 @@ class JWPlayer extends AbstractMultimediaPlayer {
 			
 			$GLOBALS['TL_JAVASCRIPT'][] = $this->objConfig->getEmbedderPath();
 			
-			$objTemplate = new FrontendTemplate('bbit_jwp');
+			$objTemplate = new FrontendTemplate($this->objConfig->getTemplate());
 			$objTemplate->setData($arrData);
 			return $objTemplate->parse();
 			
@@ -68,12 +66,41 @@ class JWPlayer extends AbstractMultimediaPlayer {
 		
 		$strImage = $objMM->getPreviewImage();
 		$strImage && $arrConfig['image'] = $strImage;
-		 
-		foreach($this->getProvider($objMM) as $strKey => $varOption) {
-			$arrConfig[$strKey] = $varOption;
-		}
 		
-		$arrConfig['file'] = $this->getFile($objMM);
+		if($objMM instanceof MultimediaYoutube) {
+			$arrConfig['provider'] = 'youtube';
+			$arrConfig['file'] = $objMM->getSource();
+			
+		} elseif($objMM instanceof MultimediaVideoHTTP) {
+			$arrConfig['provider'] = 'video';
+			$arrSources = $objMM->getSource();
+			foreach($arrSources as $arrSource) {
+				$arrConfig['levels'][] = array(
+					'file' => $arrSource['url'],
+					'type' => $arrSource['mime']
+				);
+			}
+			
+		} elseif($objMM instanceof MultimediaRTMP) {
+			throw new Exception('RTMP streaming not implemented.');
+			$arrConfig['provider'] = 'rtmp';
+			$arrConfig['streamer'] = $objMM->getStreamer();
+			$arrConfig['rtmp.loadbalance'] = $objMM->isLoadbalanced();
+			$arrConfig['rtmp.dvr'] = $objMM->isDVRStream();
+			$arrConfig['rtmp.subscribe'] = $objMM->isSubscriptionStream();
+			
+		} elseif($objMM instanceof MultimediaHTTP) {
+			throw new Exception('HTTP streaming not implemented.');
+			$arrConfig['provider'] = 'http';
+			$arrConfig['http.startparam'] = $objMM->getStartParam();
+			
+		} elseif($objMM instanceof AbstractMultimediaAudio) {
+			throw new Exception('Audio streaming not implemented.');
+			$arrConfig['provider'] = 'sound';
+			
+		} else {
+			throw new Exception(sprintf('Multimedia type [%s] not supported', get_class($objMM)));
+		}
 		
 		foreach($this->objConfig->getPlugins() as $objPlugin) {
 			if(!$objPlugin->isEnabled()) {
@@ -84,55 +111,6 @@ class JWPlayer extends AbstractMultimediaPlayer {
 		}
 		
 		return $arrConfig;
-	}
-	
-	protected function getProvider(Multimedia $objMM) {
-		$arrConfig = array();
-		
-		switch(get_class($objMM)) {
-			case 'MultimediaStreamRTMP':
-				$arrConfig['provider'] = 'rtmp';
-				$arrConfig['streamer'] = $objMM->getStreamer();
-				$arrConfig['rtmp.loadbalance'] = $objMM->isLoadbalanced();
-				$arrConfig['rtmp.dvr'] = $objMM->isDVRStream();
-				$arrConfig['rtmp.subscribe'] = $objMM->isSubscriptionStream();
-				break;
-				
-			case 'MultimediaStreamHTTP':
-				$arrConfig['provider'] = 'http';
-				$arrConfig['http.startparam'] = $objMM->getStartParam();
-				break;
-				
-			case 'MultimediaYoutube':
-				$arrConfig['provider'] = 'youtube';
-				break;
-		}
-		
-		if(!$arrConfig['provider']) {
-			switch($objMM->getMIMEType(true)) {
-				case 'audio':
-					$arrConfig['provider'] = 'sound';
-					break;
-			
-				case 'video':
-					$arrConfig['provider'] = 'video';
-					break;
-			
-				case 'image':
-					$arrConfig['provider'] = 'image';
-					break;
-						
-				default:
-// 					$arrConfig['provider'] = 'file';
-					break;
-			}
-		}
-		
-		return $arrConfig;
-	}
-	
-	protected function getFile(Multimedia $objMM) {
-		return $objMM->getSource();
 	}
 	
 }

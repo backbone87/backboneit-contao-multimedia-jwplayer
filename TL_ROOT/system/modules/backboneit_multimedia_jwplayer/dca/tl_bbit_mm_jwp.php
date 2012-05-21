@@ -64,11 +64,12 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 	),
 	
 	'palettes' => array(
-		'default'		=> '{general_legend},title,fallback;'
-			. '{player_legend},jwplayer,html5,smoothing;'
-			. '{behavior_legend},stretching,volume,mute,repeatplay,autoplay;'
-			. '{appearence_legend},image,size,skin;'
-			. '{logo_legend},logo'
+		'default'		=> '{general_legend},title,fallback'
+			. ';{player_legend},jwplayer,html5,smoothing'
+			. ';{behavior_legend},stretching,volume,mute,repeatplay,autoplay'
+			. ';{appearence_legend},image,size,skin'
+			. ';{logo_legend},logo'
+			. ';{expert_legend},template'
 	),
 	
 	'subpalettes' => array(
@@ -218,7 +219,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'tl_class'			=> 'clr w50'
 			),
 			'save_callback'	=> array(
-				array('MultimediaDCA', 'validateSize')
+				array('MultimediaDCA', 'saveSize')
 			),
 		),
 		'skin' => array (
@@ -481,6 +482,18 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'tl_class'			=> 'w50'
 			)
 		),
+		
+		'template' => array(
+			'label'			=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['template'],
+			'exclude'		=> true,
+			'inputType'		=> 'select',
+			'default'		=> 'bbit_jwp',
+			'options_callback' => array('JWPlayerDCA', 'getTemplateOptions'),
+			'reference'		=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['templateOptions'],
+			'eval'			=> array(
+				'tl_class'		=> 'clr w50'
+			)
+		)
 	)
 );
 	

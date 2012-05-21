@@ -166,6 +166,10 @@ class JWPlayerConfiguration extends System {
 		return $this->arrData['size'];
 	}
 	
+	public function getTemplate() {
+		return $this->arrData['template'] ? $this->arrData['template'] : 'bbit_jwp';
+	}
+	
 	public function getPlugins() {
 		if(!$this->arrData['plugins']) {
 			return array();
@@ -296,7 +300,32 @@ class JWPlayerConfiguration extends System {
 			$objZip = new ZipReader($strPath);
 			$objZip->first();
 			do {
-				$objFile = new File($strTempPath . '/' . $objZip->file_name);
+				if(substr($objZip->file_name, -3) == 'xml') {
+					$strBase = dirname($objZip->file_name);
+					break;
+				}
+			} while($objZip->next());
+			
+			
+			if(!strlen($strBase)) {
+				throw new Exception(sprintf('No skin XML found in archive [%s].', $strPath));
+			}
+			
+			if($strBase == '.') {
+				$strBase = '';
+				$intBaseLen = 0;
+			} else {
+				$strBase .= '/';
+				$intBaseLen = strlen($strBase);
+			}
+			
+			$objZip->first();
+			do {
+				if(strncmp($strBase, $objZip->file_name, $intBaseLen) != 0) {
+					continue;
+				}
+				
+				$objFile = new File($strTempPath . '/' . substr($objZip->file_name, $intBaseLen));
 				try {
 					$objFile->write($objZip->unzip());
 					unset($objFile); // finally statement missing in PHP...
