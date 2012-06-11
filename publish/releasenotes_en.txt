@@ -3,11 +3,11 @@ JW-Player
 
 
 === Suchbegriffe
-video,audio,barrierefrei,jwplayer,multimedia
+video,audio,accessible,jwplayer,multimedia
 
 
 === Teaser
-Ein vollständig konfigurierbare Integration des beliebten JW-Players.
+A completly configurable integration of the popular JW Player.
 
 
 === Beschreibung
