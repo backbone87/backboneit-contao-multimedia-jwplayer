@@ -2,6 +2,12 @@
 
 class JWPlayerConfiguration extends System {
 	
+	const MODE_HTML5 = 'html5';
+	
+	const MODE_FLASH = 'flash';
+	
+	const MODE_DOWNLOAD = 'download';
+	
 	public static function create($intID = null, $blnUncached = false) {
 		if(is_numeric($intID)) {
 			$objCfg = self::createByID(intval($intID), $blnUncached);
@@ -95,6 +101,8 @@ class JWPlayerConfiguration extends System {
 	
 	protected $arrData;
 	
+	protected $arrConfig;
+	
 	private $strPlayerPath;
 	
 	private $strEmbedderPath;
@@ -105,57 +113,16 @@ class JWPlayerConfiguration extends System {
 		$this->arrData['size'] = deserialize($this->arrData['size'], true);
 	}
 	
+	public function reset() {
+		unset($this->arrConfig);
+	}
+	
 	public function getConfig() {
-		$arrConfig = array();
-		
-		$this->arrData['html5'] && $arrConfig['modes'][] = array('type' => 'html5');
-		$arrConfig['modes'][] = array('type' => 'flash', 'src' => $this->getPlayerPath());
-		$this->arrData['html5'] || $arrConfig['modes'][] = array('type' => 'html5');
-		$arrConfig['modes'][] = array('type' => 'download');
-		
-		$arrConfig['width']			= $this->arrData['size'][0];
-		$arrConfig['height']		= $this->arrData['size'][1];
-		
-		$arrConfig['image']			= $this->arrData['image'];
-		$arrConfig['stretching']	= $this->arrData['stretching'];
-		$arrConfig['smoothing']		= $this->arrData['smoothing'] ? true : false;
-		$arrConfig['volume']		= intval($this->arrData['volume']);
-		$arrConfig['mute']			= $this->arrData['mute'] ? true : false;
-		$arrConfig['repeat']		= $this->arrData['repeatplay'];
-		$arrConfig['autostart']		= $this->arrData['autoplay'] ? true : false;
-		$arrConfig['dock']			= $this->arrData['dock'] ? true : false;
-		$arrConfig['icons']			= $this->arrData['icons'] ? true : false;
-		
-		$arrConfig['controlbar']	= $this->arrData['controlbar'];
-		$arrConfig['controlbar.idlehide'] = $this->arrData['controlbarIdlehide'];
-		
-		if($this->arrData['logo']) {
-			$arrConfig['logo.file']		= $this->arrData['logoFile'];
-			
-			if($this->arrData['logoLink']) {
-				$arrConfig['logo.link']	= $this->arrData['logoLinkURL'];
-				$arrConfig['logo.linktarget'] = $this->arrData['logoLinkTarget'] ? '_blank' : '_self';
-			}
-			
-			$arrConfig['logo.hide']		= $this->arrData['logoHide'] ? true : false;
-			$arrConfig['logo.margin']	= $this->arrData['logoMargin'];
-			$arrConfig['logo.position']	= $this->arrData['logoPosition'];
-			$arrConfig['logo.timeout']	= intval($this->arrData['logoTimeout']);
-			$arrConfig['logo.over']		= intval($this->arrData['logoOver']) / 100;
-			$arrConfig['logo.out']		= intval($this->arrData['logoOut']) / 100;
+		if(!isset($this->arrConfig)) {
+			$this->arrConfig = $this->buildConfig();
 		}
 		
-		$arrConfig['skin'] 			= $this->getSkinPath();
-		
-		$arrConfig['backcolor']		= $this->arrData['backcolor'];
-		$arrConfig['frontcolor']	= $this->arrData['frontcolor'];
-		$arrConfig['lightcolor']	= $this->arrData['lightcolor'];
-		$arrConfig['screencolor']	= $this->arrData['screencolor'];
-		
-		$arrConfig['netstreambasepath'] = Environment::getInstance()->base;
-		$arrConfig['wmode'] = 'opaque';
-		
-		return $arrConfig;
+		return $this->arrConfig;
 	}
 	
 	public function getData() {
@@ -339,6 +306,59 @@ class JWPlayerConfiguration extends System {
 		}
 		
 		return $strSkinFile;
+	}
+	
+	protected function buildConfig() {
+		$arrConfig = array();
+	
+		$this->arrData['html5'] && $arrConfig['modes'][] = array('type' => self::MODE_HTML5);
+		$arrConfig['modes'][] = array('type' => self::MODE_FLASH, 'src' => $this->getPlayerPath());
+		$this->arrData['html5'] || $arrConfig['modes'][] = array('type' => self::MODE_HTML5);
+		$arrConfig['modes'][] = array('type' => self::MODE_DOWNLOAD);
+	
+		$arrConfig['width']			= $this->arrData['size'][0];
+		$arrConfig['height']		= $this->arrData['size'][1];
+	
+		$arrConfig['image']			= $this->arrData['image'];
+		$arrConfig['stretching']	= $this->arrData['stretching'];
+		$arrConfig['smoothing']		= $this->arrData['smoothing'] ? true : false;
+		$arrConfig['volume']		= intval($this->arrData['volume']);
+		$arrConfig['mute']			= $this->arrData['mute'] ? true : false;
+		$arrConfig['repeat']		= $this->arrData['repeatplay'];
+		$arrConfig['autostart']		= $this->arrData['autoplay'] ? true : false;
+		$arrConfig['dock']			= $this->arrData['dock'] ? true : false;
+		$arrConfig['icons']			= $this->arrData['icons'] ? true : false;
+	
+		$arrConfig['controlbar']	= $this->arrData['controlbar'];
+		$arrConfig['controlbar.idlehide'] = $this->arrData['controlbarIdlehide'];
+	
+		if($this->arrData['logo']) {
+			$arrConfig['logo.file']		= $this->arrData['logoFile'];
+	
+			if($this->arrData['logoLink']) {
+				$arrConfig['logo.link']	= $this->arrData['logoLinkURL'];
+				$arrConfig['logo.linktarget'] = $this->arrData['logoLinkTarget'] ? '_blank' : '_self';
+			}
+	
+			$arrConfig['logo.hide']		= $this->arrData['logoHide'] ? true : false;
+			$arrConfig['logo.margin']	= $this->arrData['logoMargin'];
+			$arrConfig['logo.position']	= $this->arrData['logoPosition'];
+			$arrConfig['logo.timeout']	= intval($this->arrData['logoTimeout']);
+			$arrConfig['logo.over']		= intval($this->arrData['logoOver']) / 100;
+			$arrConfig['logo.out']		= intval($this->arrData['logoOut']) / 100;
+		}
+	
+		$arrConfig['skin'] 			= $this->getSkinPath();
+	
+		$arrConfig['backcolor']		= $this->arrData['backcolor'];
+		$arrConfig['frontcolor']	= $this->arrData['frontcolor'];
+		$arrConfig['lightcolor']	= $this->arrData['lightcolor'];
+		$arrConfig['screencolor']	= $this->arrData['screencolor'];
+	
+		$arrConfig['netstreambasepath'] = Environment::getInstance()->base;
+		$arrConfig['wmode'] = 'opaque';
+		
+		return $arrConfig;
 	}
 	
 }
