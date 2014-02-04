@@ -1,0 +1,38 @@
+{
+	"name": "backboneit/contao-multimedia-jwplayer",
+	"description": "JW-Player 5 integration into backboneIT multimedia extension for Contao CMS",
+	"keywords": [ "video", "player", "multimedia", "contao" ],
+	"type": "contao-module",
+	"license": "LGPL-3.0+",
+	"authors": [
+		{
+			"name": "Oliver Hoff",
+			"email": "oliver@hofff.com",
+			"homepage": "http://hofff.com/",
+			"role": "Developer"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/backbone87/contao-multimedia-jwplayer/issues",
+		"forum": "https://community.contao.org/de/showthread.php?31508-backboneit_multimedia_jwplayer-JW-Player-Integration-f%FCr-Contao",
+		"irc": "irc://irc.freenode.org/contao.dev",
+		"source": "https://github.com/backbone87/contao-multimedia-jwplayer"
+	},
+	"require": {
+		"php": ">=5.3",
+		"contao/core": ">=2.11,<3",
+		"backboneit/contao-multimedia": ">=1.1,<2"
+	},
+	"replace": {
+		"contao-legacy/backboneit_multimedia_jwplayer": "*"
+	},
+	"extra": {
+		"contao": {
+			"sources": {
+				"TL_ROOT/system/modules/backboneit_multimedia_jwplayer": "system/modules/backboneit_multimedia_jwplayer"
+			}
+		},
+		"branch-alias": {
+		}
+	}
+}
