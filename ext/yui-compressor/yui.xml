@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="yui" basedir=".">
-	
+
 	<dirname property="yui.basedir" file="${ant.file.yui}"/>
 	<property name="yui.jar" value="${yui.basedir}/yuicompressor-2.4.2.jar" />
-	
+
 	<property name="minjs.src" value="src" />
 	<property name="minjs.license" value="publish/license_js.txt" />
-	
+
 	<property name="mincss.src" value="src" />
 	<property name="mincss.license" value="publish/license_css.txt" />
-	
+
 	<target name="minjs.nosrc" unless="minjs.keepsrc">
 		<echo>Deleting source file.</echo>
 	  	<delete dir="${minjs.deldir}" />
 	</target>
-	 
+
 	<target name="minjs">
 		<echo>Minify JS ${minjs.file}...</echo>
 	  	<concat destfile="${minjs.dir}/${minjs.src}/${minjs.file}" >
@@ -41,12 +41,12 @@
 		<gzip src="${minjs.dir}/${minjs.file}" destfile="${minjs.dir}/${minjs.file}.gz" />
 		<echo>Done.</echo>
 	</target>
-	
+
 	<target name="mincss.nosrc" unless="${mincss.keepsrc}">
 		<echo>Deleting source file.</echo>
 	  	<delete dir="${mincss.dir}/${mincss.src}" />
 	</target>
-	
+
 	<target name="mincss">
 		<echo>Minify CSS ${mincss.file}...</echo>
 	  	<concat destfile="${mincss.dir}/${mincss.src}/${mincss.file}">
@@ -74,7 +74,7 @@
 	  	<gzip src="${mincss.dir}/${mincss.file}" destfile="${mincss.dir}/${mincss.file}.gz" />
 		<echo>Done.</echo>
 	</target>
-		
+
 	<target name="yuicompress">
 		<java jar="${yui.jar}" fork="true">
 			<arg value="-v" />

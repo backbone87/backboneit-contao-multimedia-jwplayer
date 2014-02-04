@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="backboneit_multimedia_jwplayer" default="build" basedir=".">
-  
+
 	<property name="build.dir" value="build" />
 	<property name="build.module" value="${build.dir}/TL_ROOT/system/modules/backboneit_multimedia_jwplayer" />
 	<property name="minjs.dir" value="${build.module}/js" />
@@ -14,7 +14,7 @@
 		<delete dir="${build.dir}" />
 		<mkdir dir="${build.dir}/TL_ROOT" />
 	</target>
-	
+
 	<target name="build" depends="clean">
 		<copy todir="${build.dir}/TL_ROOT">
 			<fileset dir="TL_ROOT" includes="**/*.php" />
@@ -26,7 +26,7 @@
 		<copy todir="${build.dir}/TL_ROOT">
 			<fileset dir="TL_ROOT" excludes="**/*.php" />
 		</copy>
-		
+
 	  	<zip destfile="${build.dir}/backboneit_multimedia_jwplayer.zip">
 	  		<zipfileset dir="${build.dir}/TL_ROOT" />
 	  	</zip>

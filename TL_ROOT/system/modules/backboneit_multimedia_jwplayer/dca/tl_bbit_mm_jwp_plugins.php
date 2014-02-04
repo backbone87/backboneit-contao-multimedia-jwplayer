@@ -11,7 +11,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp_plugins'] = array(
 		'onsubmit_callback'	=> array(
 		),
 	),
-	
+
 	'list' => array(
 		'sorting' => array(
 			'mode'			=> 2,
@@ -56,14 +56,14 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp_plugins'] = array(
 			)
 		),
 	),
-	
+
 	'palettes' => array(
 		'__selector__' => array('plugin'),
-		
+
 		'generic' => '{general_legend},plugin,enabled'
 			. ';{generic_legend},generic_name,generic_params'
 			,
-		
+
 		'captions' => '{general_legend},plugin,enabled'
 			. ';{captions_legend},captions_state'
 			. ';{captions_appearence_legend},captions_back'
@@ -71,19 +71,19 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp_plugins'] = array(
 // 			. ',captions_fontSize,captions_fontStyle'
 // 			. ',captions_fontWeight,captions_textDecoration'
 			,
-		
+
 		'audiodesc' => '{general_legend},plugin,enabled'
 			. ';{audiodesc_legend},audiodesc_state,audiodesc_volume'
 			. ',audiodesc_ducking,audiodesc_debug'
 			,
 
 	),
-	
+
 	'subpalettes' => array(
 	),
-	
+
 	'fields' => array(
-	
+
 		'plugin' => array(
 			'label'		=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp_plugins']['plugin'],
 			'inputType'	=> 'select',
@@ -104,8 +104,8 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp_plugins'] = array(
 				'tl_class'			=> 'w50 cbx m12'
 			)
 		),
-		
-		
+
+
 		'generic_name' => array(
 			'label'		=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp_plugins']['generic_name'],
 			'exclude'	=> true,
@@ -131,8 +131,8 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp_plugins'] = array(
 				array('JWPlayerDCA', 'validateJSON'),
 			),
 		),
-		
-		
+
+
 		'captions_state' => array(
 			'label'		=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp_plugins']['captions_state'],
 			'inputType'	=> 'checkbox',
@@ -147,8 +147,8 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp_plugins'] = array(
 				'tl_class'			=> 'cbx'
 			)
 		),
-		
-		
+
+
 		'audiodesc_state' => array(
 			'label'		=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp_plugins']['audiodesc_state'],
 			'inputType'	=> 'checkbox',

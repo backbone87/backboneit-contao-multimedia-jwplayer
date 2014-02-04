@@ -29,7 +29,7 @@ $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['player_legend']
 $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['jwplayer']
 	= array('JW-Player Applikation (Version 5.3 oder höher)',
 	'<strong><a href="http://www.longtailvideo.com/players/" title="JW-Player auf longtailvideo.com"
-	onclick="window.open(this.href); return false;">JW-Player Download</a></strong> - 
+	onclick="window.open(this.href); return false;">JW-Player Download</a></strong> -
 	Aufgrund von lizenzrechtlichen Bestimmungen darf der JW-Player nicht in dieser
 	Contao-Erweiterung enthalten sein. Sie müssen eine Kopie des Players von der
 	Herstellerseite herunterladen und das Archiv in der Contao-Dateiverwaltung hochladen.
@@ -131,7 +131,7 @@ $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['logoFile']
 $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['logoMargin']
 	= array('Abstand (in Pixeln)', 'Der Abstand des Logos zum Rand des Players bzw. zur Bedienleiste.');
 $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['logoPosition']
-	= array('Position', 'Die relative Position des Logos im Player.'); 
+	= array('Position', 'Die relative Position des Logos im Player.');
 $GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['logoPositionOptions'] = array(
 	'top-left'		=> 'Oben links',
 	'top-right'		=> 'Oben rechts',

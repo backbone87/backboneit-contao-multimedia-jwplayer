@@ -12,7 +12,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 			array('JWPlayerDCA', 'checkConfiguration')
 		),
 	),
-	
+
 	'list' => array(
 		'sorting' => array(
 			'mode'			=> 2,
@@ -62,7 +62,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 			)
 		),
 	),
-	
+
 	'palettes' => array(
 		'default'		=> '{general_legend},title,fallback'
 			. ';{player_legend},jwplayer,html5,smoothing'
@@ -71,7 +71,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 			. ';{logo_legend},logo'
 			. ';{expert_legend},template'
 	),
-	
+
 	'subpalettes' => array(
 		'skin'	=> array(
 			''		=> 'dock,icons,controlbar,backcolor,frontcolor,lightcolor,screencolor',
@@ -86,9 +86,9 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 		'logoLink'	=> 'logoLinkURL,logoLinkTarget',
 		'logoHide'	=> 'logoTimeout'
 	),
-	
+
 	'fields' => array(
-	
+
 		'title' => array(
 			'label'		=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['title'],
 			'exclude'	=> true,
@@ -107,8 +107,8 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'tl_class'			=> 'w50 cbx m12'
 			)
 		),
-		
-		
+
+
 		'jwplayer' => array(
 			'label'		=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['jwplayer'],
 			'exclude'	=> true,
@@ -138,8 +138,8 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'tl_class'			=> 'w50 cbx'
 			)
 		),
-		
-		
+
+
 		'stretching' => array (
 			'label'			=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['stretching'],
 			'default'		=> 'uniform',
@@ -192,8 +192,8 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'tl_class'			=> 'w50 cbx m12'
 			)
 		),
-		
-		
+
+
 		'image' => array(
 			'label'			=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['image'],
 			'exclude'		=> true,
@@ -363,8 +363,8 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'tl_class'			=> 'w50'
 			)
 		),
-		
-		
+
+
 		'logo' => array(
 			'label'			=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['logo'],
 			'exclude'		=> true,
@@ -482,7 +482,7 @@ $GLOBALS['TL_DCA']['tl_bbit_mm_jwp'] = array(
 				'tl_class'			=> 'w50'
 			)
 		),
-		
+
 		'template' => array(
 			'label'			=> &$GLOBALS['TL_LANG']['tl_bbit_mm_jwp']['template'],
 			'exclude'		=> true,

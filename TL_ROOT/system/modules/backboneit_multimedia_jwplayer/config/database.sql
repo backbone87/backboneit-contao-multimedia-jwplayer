@@ -10,14 +10,14 @@
 CREATE TABLE `tl_bbit_mm_jwp` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `tstamp` int(10) unsigned NOT NULL default '0',
-  
+
   `title` varchar(255) NOT NULL default '',
   `fallback` char(1) NOT NULL default '',
-  
+
   `jwplayer` varchar(255) NOT NULL default '',
   `html5` char(1) NOT NULL default '',
   `smoothing` char(1) NOT NULL default '1',
-  
+
   `stretching` char(10) NOT NULL default 'uniform',
   `volume` smallint(5) NOT NULL default '90',
   `mute` char(1) NOT NULL default '',
@@ -37,7 +37,7 @@ CREATE TABLE `tl_bbit_mm_jwp` (
   `frontcolor` varchar(6) NOT NULL default '',
   `lightcolor` varchar(6) NOT NULL default '',
   `screencolor` varchar(6) NOT NULL default '',
-  
+
   `logo` char(1) NOT NULL default '',
   `logoLink` char(1) NOT NULL default '',
   `logoLinkURL` varchar(255) NOT NULL default '',
@@ -49,9 +49,9 @@ CREATE TABLE `tl_bbit_mm_jwp` (
   `logoOut` smallint(5) NOT NULL default '50',
   `logoHide` char(1) NOT NULL default '1',
   `logoTimeout` smallint(5) NOT NULL default '3',
-  
+
   `template` varchar(255) NOT NULL default '',
-  
+
   PRIMARY KEY  (`id`),
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
@@ -59,13 +59,13 @@ CREATE TABLE `tl_bbit_mm_jwp_plugins` (
   `id` int(10) unsigned NOT NULL auto_increment,
   `pid` int(10) unsigned NOT NULL default '0',
   `tstamp` int(10) unsigned NOT NULL default '0',
-  
+
   `plugin` varchar(255) NOT NULL default '',
   `enabled` char(1) NOT NULL default '1',
-  
+
   `generic_name` varchar(255) NOT NULL default '',
   `generic_params` blob NULL,
-  
+
   `captions_state` char(1) NOT NULL default '',
   `captions_back` char(1) NOT NULL default '',
 

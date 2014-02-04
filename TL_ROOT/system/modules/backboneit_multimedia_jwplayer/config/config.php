@@ -8,5 +8,5 @@ $GLOBALS['BE_MOD']['design']['bbit_mm_jwp'] = array(
 $GLOBALS['BBIT_MM_PLAYERS']['bbit_mm_jwp'] = 'JWPlayer';
 
 $GLOBALS['BBIT_MM_JWP_PLUGINS']['generic'] = 'JWPlayerGenericPlugin';
-$GLOBALS['BBIT_MM_JWP_PLUGINS']['captions'] = 'JWPlayerCaptionsPlugin'; 
-$GLOBALS['BBIT_MM_JWP_PLUGINS']['audiodesc'] = 'JWPlayerAudiodescPlugin'; 
+$GLOBALS['BBIT_MM_JWP_PLUGINS']['captions'] = 'JWPlayerCaptionsPlugin';
+$GLOBALS['BBIT_MM_JWP_PLUGINS']['audiodesc'] = 'JWPlayerAudiodescPlugin';
