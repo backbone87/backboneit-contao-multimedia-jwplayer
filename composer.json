@@ -21,7 +21,8 @@
 	"require": {
 		"php": ">=5.3",
 		"contao/core": ">=2.11,<3",
-		"backboneit/contao-multimedia": ">=1.1,<2"
+		"backboneit/contao-multimedia": ">=1.1,<2",
+		"contao-legacy/backboneit_dctableextended": ">=1,<2"
 	},
 	"replace": {
 		"contao-legacy/backboneit_multimedia_jwplayer": "*"
